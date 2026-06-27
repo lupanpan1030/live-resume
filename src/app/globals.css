@@ -933,79 +933,6 @@
     will-change: opacity, transform;
   }
 
-  .folio-constellation-field {
-    transform-origin: center;
-    animation: folio-constellation-field 14000ms ease-in-out 2600ms infinite
-      alternate;
-    will-change: transform;
-  }
-
-  .folio-constellation-line {
-    opacity: 0.08;
-    transition: opacity 260ms ease-out;
-  }
-
-  [data-constellation-mode="auto"] .folio-constellation-line {
-    opacity: 0.11;
-  }
-
-  [data-constellation-mode="transition"] .folio-constellation-line {
-    opacity: 0.17;
-  }
-
-  .folio-constellation-star {
-    opacity: 0.18;
-    transform-origin: center;
-    transform: scale(0.86);
-    will-change: transform, opacity;
-  }
-
-  .folio-constellation-star--ambient {
-    opacity: 0.28;
-    animation: folio-constellation-ambient-hit
-      var(--folio-constellation-cycle, 14500ms) ease-in-out infinite;
-    animation-delay: var(--folio-hit-delay, 0ms);
-  }
-
-  .folio-constellation-star--label {
-    opacity: 0.1;
-    animation: folio-constellation-star-hit
-      var(--folio-constellation-cycle, 14500ms) ease-in-out infinite;
-    animation-delay: var(--folio-hit-delay, 0ms);
-  }
-
-  .folio-constellation-label {
-    opacity: 0;
-    transform: translate3d(0, 0.18rem, 0) scale(0.98);
-    transform-origin: var(--folio-label-origin, center);
-    will-change: opacity, transform;
-    animation: folio-constellation-label-hit
-      var(--folio-constellation-cycle, 14500ms) ease-in-out infinite;
-    animation-delay: var(--folio-hit-delay, 0ms);
-  }
-
-  .folio-constellation-scan-path {
-    fill: none;
-    stroke: rgba(23, 51, 87, 0.035);
-    stroke-dasharray: 0.016 0.09;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 0.12;
-  }
-
-  .folio-constellation-scan-dot {
-    fill: rgba(255, 255, 255, 0.92);
-    filter: drop-shadow(0 0 5px rgba(23, 51, 87, 0.2))
-      drop-shadow(0 0 10px rgba(156, 119, 72, 0.14));
-    opacity: 0.74;
-    animation: folio-constellation-scan-dot 3200ms ease-in-out infinite;
-  }
-
-  [data-constellation-mode="transition"] .folio-constellation-scan-dot {
-    opacity: 1;
-    filter: drop-shadow(0 0 7px rgba(23, 51, 87, 0.28))
-      drop-shadow(0 0 16px rgba(156, 119, 72, 0.24));
-  }
 }
 
 @keyframes folio-hero-enter {
@@ -1065,115 +992,6 @@
   100% {
     opacity: 0;
     transform: translate3d(360%, 0, 0) skewX(-22deg);
-  }
-}
-
-@keyframes folio-constellation-field {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(-0.08deg);
-  }
-
-  100% {
-    transform: translate3d(0.35rem, -0.22rem, 0) rotate(0.1deg);
-  }
-}
-
-@keyframes folio-constellation-ambient-hit {
-  0%,
-  9.5%,
-  100% {
-    opacity: 0.22;
-    transform: translate3d(0, 0, 0) scale(0.86);
-  }
-
-  1.2% {
-    opacity: 0.5;
-    transform: translate3d(0, 0, 0) scale(1.02);
-  }
-
-  4.2% {
-    opacity: 0.58;
-    transform: translate3d(
-        var(--folio-hit-x, 0),
-        var(--folio-hit-y, 0),
-        0
-      )
-      scale(1.1);
-  }
-
-  6.8% {
-    opacity: 0.5;
-    transform: translate3d(0, 0, 0) scale(1.02);
-  }
-}
-
-@keyframes folio-constellation-star-hit {
-  0%,
-  9.5%,
-  100% {
-    opacity: 0.12;
-    transform: translate3d(0, 0, 0) scale(0.86);
-  }
-
-  1.2% {
-    opacity: 0.78;
-    transform: translate3d(0, 0, 0) scale(1.12);
-  }
-
-  4.2% {
-    opacity: 0.92;
-    transform: translate3d(
-        var(--folio-hit-x, 0),
-        var(--folio-hit-y, 0),
-        0
-      )
-      scale(1.34);
-  }
-
-  6.8% {
-    opacity: 0.74;
-    transform: translate3d(0, 0, 0) scale(1.1);
-  }
-}
-
-@keyframes folio-constellation-label-hit {
-  0%,
-  0.6%,
-  9.5%,
-  100% {
-    opacity: 0;
-    transform: translate3d(0, 0.14rem, 0) scale(0.96);
-  }
-
-  1.4% {
-    opacity: 0.9;
-    transform: translate3d(0, 0, 0) scale(1.12);
-  }
-
-  4.4% {
-    opacity: 0.96;
-    transform: translate3d(
-        var(--folio-hit-x, 0),
-        var(--folio-hit-y, 0),
-        0
-      )
-      scale(1.18);
-  }
-
-  7.4% {
-    opacity: 0.9;
-    transform: translate3d(0, 0, 0) scale(1.1);
-  }
-}
-
-@keyframes folio-constellation-scan-dot {
-  0%,
-  100% {
-    transform: scale(0.92);
-  }
-
-  50% {
-    transform: scale(1.16);
   }
 }
 
@@ -1316,13 +1134,7 @@
   .folio-hero-enter,
   .folio-hero-enter-scale,
   .folio-hero-divider-enter,
-  .folio-portrait-sheen,
-  .folio-constellation-field,
-  .folio-constellation-line,
-  .folio-constellation-trace,
-  .folio-constellation-star,
-  .folio-constellation-label,
-  .folio-constellation-scan-dot {
+  .folio-portrait-sheen {
     animation: none;
     filter: none;
   }
@@ -1332,29 +1144,6 @@
   .folio-hero-divider-enter,
   .folio-portrait-sheen {
     opacity: 1;
-    transform: none;
-  }
-
-  .folio-constellation-field {
-    transform: none;
-  }
-
-  .folio-constellation-line {
-    opacity: 0;
-    stroke-dashoffset: 0;
-  }
-
-  .folio-constellation-trace {
-    opacity: 0;
-  }
-
-  .folio-constellation-star {
-    opacity: 0.24;
-    transform: scale(0.86);
-  }
-
-  .folio-constellation-label {
-    opacity: 0;
     transform: none;
   }
 }

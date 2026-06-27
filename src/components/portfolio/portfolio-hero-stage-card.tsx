@@ -1,9 +1,5 @@
 import { ArrowDown, ArrowRight, Download } from "lucide-react";
 import type { CSSProperties } from "react";
-import {
-  HeroExperienceOrbit,
-  type HeroExperienceOrbitMode,
-} from "@/components/portfolio/hero-experience-orbit";
 import { HeroPortraitCard } from "@/components/portfolio/hero-portrait-card";
 import type { DownloadAsset, ResumeContent } from "@/content";
 import { cn } from "@/lib/utils";
@@ -14,7 +10,6 @@ type PortfolioHeroStageCardProps = {
   decorative?: boolean;
   profile: ResumeContent["profile"];
   showEntranceAnimation?: boolean;
-  constellationMode?: HeroExperienceOrbitMode;
   variant?: "hero" | "screen";
   cardId?: string;
 };
@@ -49,7 +44,6 @@ export function PortfolioHeroStageCard({
   decorative = false,
   profile,
   showEntranceAnimation = false,
-  constellationMode = "auto",
   variant = "hero",
   cardId,
 }: PortfolioHeroStageCardProps) {
@@ -89,7 +83,6 @@ export function PortfolioHeroStageCard({
     : undefined;
   const baseEnterClass = showEntranceAnimation ? "folio-hero-enter" : undefined;
   const dividerEnterClass = showEntranceAnimation ? "folio-hero-divider-enter" : undefined;
-  const showExperienceOrbit = isHero && !decorative;
 
   const scrollHref = "#portfolio-content";
   const projectsHref = "#projects";
@@ -101,7 +94,7 @@ export function PortfolioHeroStageCard({
       className={cn(
         "relative z-10 w-full max-w-full overflow-hidden rounded-[2.2rem] border border-white/45 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,255,255,0.88)_42%,rgba(248,246,240,0.82))] shadow-[0_22px_56px_rgba(23,35,53,0.05),inset_0_1px_0_rgba(255,255,255,0.58)] backdrop-blur-[18px]",
         !isHero && "rounded-[1.85rem] border-white/38 shadow-[0_20px_48px_rgba(23,35,53,0.08),inset_0_1px_0_rgba(255,255,255,0.52)]",
-        !showExperienceOrbit && className
+        className
       )}
     >
       <div
@@ -317,17 +310,5 @@ export function PortfolioHeroStageCard({
     </div>
   );
 
-  if (!showExperienceOrbit) {
-    return card;
-  }
-
-  return (
-    <div className={cn("relative z-10 overflow-visible", className)}>
-      <HeroExperienceOrbit
-        mode={constellationMode}
-        showEntranceAnimation={showEntranceAnimation}
-      />
-      {card}
-    </div>
-  );
+  return card;
 }

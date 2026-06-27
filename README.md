@@ -23,7 +23,7 @@ Use it when you want a resume site that can be deployed quickly, customized from
 - Section editors for profile, skills, experience, projects, education, contact, and site labels
 - Persistent content storage with Upstash Redis on Vercel or Redis in Docker
 - Local file-system fallback for development
-- Animated resume hero scene and responsive single-page layout
+- Responsive single-page resume layout
 - Downloadable CV link, sitemap, robots, canonical metadata, and Open Graph image
 - One-click Vercel deploy and Docker self-hosting setup
 
@@ -140,29 +140,6 @@ Replace that file with your public CV PDF. Keep the same path, or update `conten
 
 Do not commit private resume drafts, certificates, identity documents, or source files that should not be public.
 
-## Replace Hero Assets
-
-The desktop scene images live in:
-
-```txt
-src/assets/hero/
-  keyboard.png
-  monitor-frame.png
-  mouse.png
-  table.png
-```
-
-These files are statically imported by the hero transition component. Replace them with transparent PNG assets that keep similar proportions:
-
-| File | Current role |
-| --- | --- |
-| `table.png` | Wide desk surface |
-| `keyboard.png` | Keyboard on the desk |
-| `monitor-frame.png` | Monitor frame around the resume preview |
-| `mouse.png` | Mouse on the desk |
-
-The person and avatar placeholders are inline neutral SVGs in the portfolio components. Replace them in code only if you want a custom illustration or real portrait.
-
 ## Project Structure
 
 ```txt
@@ -180,7 +157,7 @@ src/lib/store.ts            Upstash, Redis, and local content stores
 
 - Replace `public/cv/your-cv.pdf` with your public CV.
 - Edit content in the browser after logging in, or update the seed JSON in `content/`.
-- Replace hero PNG assets in `src/assets/hero/` if you want a different desktop scene.
+- Replace the inline neutral SVG portrait in the portfolio components if you want a custom illustration or real portrait.
 - Adjust visual styles in `src/app/globals.css` and the portfolio components.
 - Set `NEXT_PUBLIC_SITE_URL` for production metadata if you know the final domain.
 
