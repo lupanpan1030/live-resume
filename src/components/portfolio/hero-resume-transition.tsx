@@ -1,13 +1,16 @@
 import { PortfolioHeroStageCard } from "@/components/portfolio/portfolio-hero-stage-card";
 import type { DownloadAsset, ResumeContent } from "@/content";
+import type { ReactNode } from "react";
 
 type HeroResumeTransitionProps = {
   cvDownload: DownloadAsset;
+  editor?: ReactNode;
   profile: ResumeContent["profile"];
 };
 
 export function HeroResumeTransition({
   cvDownload,
+  editor,
   profile,
 }: HeroResumeTransitionProps) {
   return (
@@ -20,6 +23,7 @@ export function HeroResumeTransition({
         <PortfolioHeroStageCard
           cardId="hero"
           cvDownload={cvDownload}
+          editor={editor}
           profile={profile}
           showEntranceAnimation
           variant="hero"

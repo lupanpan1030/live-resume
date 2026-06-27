@@ -158,7 +158,10 @@ export default async function Home() {
   );
 
   const page = (
-    <PageBackdropTracker className="folio-page bg-none">
+    <PageBackdropTracker
+      appearance={content.site.appearance}
+      className="folio-page"
+    >
       <HashAnchorScroll />
       {ownerIsAuthed ? <OwnerModeIndicator /> : null}
 
@@ -171,6 +174,17 @@ export default async function Home() {
 
       <HeroResumeTransition
         cvDownload={cvDownload}
+        editor={
+          ownerIsAuthed ? (
+            <ProfileSectionEditor
+              className="mb-0"
+              panelClassName="max-h-[min(72svh,46rem)] overflow-y-auto"
+              panelTitle="Edit hero and profile copy"
+              profile={editableProfile}
+              sectionLabel="Hero"
+            />
+          ) : null
+        }
         profile={content.profile}
       />
 

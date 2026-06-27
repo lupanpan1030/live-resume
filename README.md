@@ -21,6 +21,7 @@ Use it when you want a resume site that can be deployed quickly, customized from
 
 - Browser-based owner editing at `/login`
 - Section editors for profile, skills, experience, projects, education, contact, and site labels
+- Appearance controls for background theme and grid style
 - Persistent content storage with Upstash Redis on Vercel or Redis in Docker
 - Local file-system fallback for development
 - Responsive single-page resume layout
@@ -85,7 +86,7 @@ The JSON files in `content/` are the default seed content and the local file-sys
 
 | File | Controls |
 | --- | --- |
-| `content/site.json` | Site name, role, location, availability, SEO text, navigation, CV link, shared UI labels |
+| `content/site.json` | Site name, role, location, availability, SEO text, navigation, CV link, appearance, shared UI labels |
 | `content/profile.json` | Hero intro, headline, proof chips, focus items, summary, overview paragraphs |
 | `content/skills.json` | Skills section title, intro, groups, and skill tags |
 | `content/experience.json` | Experience section title, intro, roles, summaries, highlights, and skills |
@@ -157,6 +158,7 @@ src/lib/store.ts            Upstash, Redis, and local content stores
 
 - Replace `public/cv/your-cv.pdf` with your public CV.
 - Edit content in the browser after logging in, or update the seed JSON in `content/`.
+- Use the Site editor to switch the background theme and grid style.
 - Replace the inline neutral SVG portrait in the portfolio components if you want a custom illustration or real portrait.
 - Adjust visual styles in `src/app/globals.css` and the portfolio components.
 - Set `NEXT_PUBLIC_SITE_URL` for production metadata if you know the final domain.

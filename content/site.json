@@ -37,6 +37,10 @@
     "label": "Download CV",
     "href": "/cv/your-cv.pdf"
   },
+  "appearance": {
+    "theme": "mist",
+    "grid": "lines"
+  },
   "ui": {
     "evidenceLabel": "Evidence snapshot",
     "focusLabel": "Current focus",

@@ -2,9 +2,11 @@
 
 import type { PointerEvent, ReactNode } from "react";
 import { useEffect, useId, useRef, useState } from "react";
+import type { SiteContent } from "@/content";
 import { cn } from "@/lib/utils";
 
 type PageBackdropTrackerProps = {
+  appearance?: SiteContent["appearance"];
   children: ReactNode;
   className?: string;
 };
@@ -104,6 +106,10 @@ function buildGridPaths(
 }
 
 export function PageBackdropTracker({
+  appearance = {
+    grid: "lines",
+    theme: "mist",
+  },
   children,
   className,
 }: PageBackdropTrackerProps) {
@@ -277,95 +283,99 @@ export function PageBackdropTracker({
     <div
       ref={frameRef}
       className={cn("relative", className)}
+      data-appearance-theme={appearance.theme}
+      data-grid-style={appearance.grid}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onPointerMove={handlePointerMove}
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 overflow-hidden motion-reduce:hidden"
-      >
-        <svg
-          className="h-full w-full"
-          viewBox={`0 0 ${viewport.width} ${viewport.height}`}
-          preserveAspectRatio="none"
-          focusable="false"
+      {appearance.grid === "lines" ? (
+        <div
           aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden motion-reduce:hidden"
         >
-          <defs>
-            <radialGradient
-              id={gradientId}
-              ref={maskGradientRef}
-              gradientUnits="userSpaceOnUse"
-              cx={viewport.width / 2}
-              cy={viewport.height / 3}
-              r="320"
-            >
-              <stop offset="0%" stopColor="white" stopOpacity="1" />
-              <stop offset="60%" stopColor="white" stopOpacity="1" />
-              <stop offset="82%" stopColor="white" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="black" stopOpacity="0" />
-            </radialGradient>
-
-            <mask id={maskId}>
-              <rect
-                width={viewport.width}
-                height={viewport.height}
-                fill={`url(#${gradientId})`}
-              />
-            </mask>
-
-            <radialGradient
-              id={baseGradientId}
-              ref={baseMaskGradientRef}
-              gradientUnits="userSpaceOnUse"
-              cx={viewport.width / 2}
-              cy={viewport.height / 3}
-              r="320"
-            >
-              <stop offset="0%" stopColor="black" />
-              <stop offset="58%" stopColor="black" />
-              <stop offset="82%" stopColor="white" />
-              <stop offset="100%" stopColor="white" />
-            </radialGradient>
-
-            <mask id={baseMaskId}>
-              <rect width={viewport.width} height={viewport.height} fill="white" />
-              <rect
-                ref={baseMaskOverlayRef}
-                width={viewport.width}
-                height={viewport.height}
-                fill={`url(#${baseGradientId})`}
-                opacity="0"
-              />
-            </mask>
-          </defs>
-
-          <g
-            fill="none"
-            stroke="rgba(23,35,53,0.06)"
-            strokeWidth="1"
-            mask={`url(#${baseMaskId})`}
-            vectorEffect="non-scaling-stroke"
+          <svg
+            className="h-full w-full"
+            viewBox={`0 0 ${viewport.width} ${viewport.height}`}
+            preserveAspectRatio="none"
+            focusable="false"
+            aria-hidden="true"
           >
-            <path ref={baseHorizontalRef} />
-            <path ref={baseVerticalRef} />
-          </g>
+            <defs>
+              <radialGradient
+                id={gradientId}
+                ref={maskGradientRef}
+                gradientUnits="userSpaceOnUse"
+                cx={viewport.width / 2}
+                cy={viewport.height / 3}
+                r="320"
+              >
+                <stop offset="0%" stopColor="white" stopOpacity="1" />
+                <stop offset="60%" stopColor="white" stopOpacity="1" />
+                <stop offset="82%" stopColor="white" stopOpacity="0.22" />
+                <stop offset="100%" stopColor="black" stopOpacity="0" />
+              </radialGradient>
 
-          <g
-            ref={warpGroupRef}
-            fill="none"
-            stroke="rgba(23,35,53,0.12)"
-            strokeWidth="1.2"
-            mask={`url(#${maskId})`}
-            opacity="0"
-            vectorEffect="non-scaling-stroke"
-          >
-            <path ref={warpHorizontalRef} />
-            <path ref={warpVerticalRef} />
-          </g>
-        </svg>
-      </div>
+              <mask id={maskId}>
+                <rect
+                  width={viewport.width}
+                  height={viewport.height}
+                  fill={`url(#${gradientId})`}
+                />
+              </mask>
+
+              <radialGradient
+                id={baseGradientId}
+                ref={baseMaskGradientRef}
+                gradientUnits="userSpaceOnUse"
+                cx={viewport.width / 2}
+                cy={viewport.height / 3}
+                r="320"
+              >
+                <stop offset="0%" stopColor="black" />
+                <stop offset="58%" stopColor="black" />
+                <stop offset="82%" stopColor="white" />
+                <stop offset="100%" stopColor="white" />
+              </radialGradient>
+
+              <mask id={baseMaskId}>
+                <rect width={viewport.width} height={viewport.height} fill="white" />
+                <rect
+                  ref={baseMaskOverlayRef}
+                  width={viewport.width}
+                  height={viewport.height}
+                  fill={`url(#${baseGradientId})`}
+                  opacity="0"
+                />
+              </mask>
+            </defs>
+
+            <g
+              fill="none"
+              stroke="rgba(23,35,53,0.06)"
+              strokeWidth="1"
+              mask={`url(#${baseMaskId})`}
+              vectorEffect="non-scaling-stroke"
+            >
+              <path ref={baseHorizontalRef} />
+              <path ref={baseVerticalRef} />
+            </g>
+
+            <g
+              ref={warpGroupRef}
+              fill="none"
+              stroke="rgba(23,35,53,0.12)"
+              strokeWidth="1.2"
+              mask={`url(#${maskId})`}
+              opacity="0"
+              vectorEffect="non-scaling-stroke"
+            >
+              <path ref={warpHorizontalRef} />
+              <path ref={warpVerticalRef} />
+            </g>
+          </svg>
+        </div>
+      ) : null}
 
       <div className="relative z-10">{children}</div>
     </div>

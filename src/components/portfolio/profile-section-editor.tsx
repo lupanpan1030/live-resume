@@ -9,7 +9,11 @@ import {
 } from "@/components/portfolio/content-section-editor";
 
 type ProfileSectionEditorProps = {
+  className?: string;
+  panelClassName?: string;
+  panelTitle?: string;
   profile: ProfileContent;
+  sectionLabel?: string;
 };
 
 const blankFocusItem: FocusItem = {
@@ -17,11 +21,19 @@ const blankFocusItem: FocusItem = {
   value: "",
 };
 
-export function ProfileSectionEditor({ profile }: ProfileSectionEditorProps) {
+export function ProfileSectionEditor({
+  className,
+  panelClassName,
+  panelTitle = "Edit public profile copy",
+  profile,
+  sectionLabel = "Profile",
+}: ProfileSectionEditorProps) {
   return (
     <ContentSectionEditor
-      panelTitle="Edit public profile copy"
-      sectionLabel="Profile"
+      className={className}
+      panelClassName={panelClassName}
+      panelTitle={panelTitle}
+      sectionLabel={sectionLabel}
       sectionName="profile"
       value={profile}
     >

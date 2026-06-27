@@ -32,7 +32,7 @@ export function SiteHeader({
 
         <nav
           aria-label="Primary"
-          className="order-3 flex w-full items-center gap-1 overflow-x-auto sm:order-none sm:w-auto sm:overflow-visible"
+          className="hidden items-center gap-1 xl:flex"
         >
           {content.nav.map((item) => (
             <Link

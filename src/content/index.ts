@@ -59,6 +59,10 @@ export type ProjectItem = {
 };
 
 export type SiteContent = {
+  appearance: {
+    grid: string;
+    theme: string;
+  };
   availability: string;
   cv: {
     href: string | null;
@@ -160,6 +164,13 @@ export const skills = skillsJson satisfies SkillsContent;
 export const education = educationJson satisfies EducationContent;
 export const contact = contactJson satisfies ContactContent;
 
+function withSiteDefaults(siteContent: SiteContent): SiteContent {
+  return {
+    ...siteContent,
+    appearance: siteContent.appearance ?? site.appearance,
+  };
+}
+
 function buildResumeContent({
   contact,
   education,
@@ -169,24 +180,26 @@ function buildResumeContent({
   site,
   skills,
 }: StoredResumeContent): ResumeContent {
+  const normalizedSite = withSiteDefaults(site);
+
   return {
     contact,
     education,
     experience,
-    nav: site.nav,
+    nav: normalizedSite.nav,
     overview: profile.overview,
     profile: {
       ...profile,
-      availability: site.availability,
-      location: site.location,
-      name: site.name,
-      role: site.role,
+      availability: normalizedSite.availability,
+      location: normalizedSite.location,
+      name: normalizedSite.name,
+      role: normalizedSite.role,
     },
     projects,
-    seo: site.seo,
-    site,
+    seo: normalizedSite.seo,
+    site: normalizedSite,
     skills,
-    ui: site.ui,
+    ui: normalizedSite.ui,
   };
 }
 

@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowRight, Download } from "lucide-react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { HeroPortraitCard } from "@/components/portfolio/hero-portrait-card";
 import type { DownloadAsset, ResumeContent } from "@/content";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ type PortfolioHeroStageCardProps = {
   className?: string;
   cvDownload: DownloadAsset;
   decorative?: boolean;
+  editor?: ReactNode;
   profile: ResumeContent["profile"];
   showEntranceAnimation?: boolean;
   variant?: "hero" | "screen";
@@ -42,6 +43,7 @@ export function PortfolioHeroStageCard({
   className,
   cvDownload,
   decorative = false,
+  editor,
   profile,
   showEntranceAnimation = false,
   variant = "hero",
@@ -101,6 +103,12 @@ export function PortfolioHeroStageCard({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.24),rgba(255,255,255,0.08)_34%,transparent_60%),radial-gradient(circle_at_16%_14%,rgba(255,255,255,0.42),transparent_24%),radial-gradient(circle_at_86%_16%,rgba(19,140,124,0.05),transparent_18%)]"
       />
+
+      {editor && !decorative ? (
+        <div className="absolute right-4 top-4 z-30 w-[min(44rem,calc(100vw-2rem))] sm:right-8 sm:top-7 lg:right-10 lg:top-10">
+          {editor}
+        </div>
+      ) : null}
 
       <div
         aria-hidden="true"

@@ -4,6 +4,7 @@ import type { NavItem, SiteContent } from "@/content";
 import {
   ContentSectionEditor,
   ObjectListEditor,
+  SelectField,
   TextField,
 } from "@/components/portfolio/content-section-editor";
 
@@ -15,6 +16,25 @@ const blankNavItem: NavItem = {
   href: "",
   label: "",
 };
+
+const themeOptions: Array<{
+  label: string;
+  value: SiteContent["appearance"]["theme"];
+}> = [
+  { label: "Mist", value: "mist" },
+  { label: "Sage", value: "sage" },
+  { label: "Sand", value: "sand" },
+  { label: "Slate", value: "slate" },
+];
+
+const gridOptions: Array<{
+  label: string;
+  value: SiteContent["appearance"]["grid"];
+}> = [
+  { label: "Lines", value: "lines" },
+  { label: "Dots", value: "dots" },
+  { label: "None", value: "none" },
+];
 
 export function SiteSectionEditor({ site }: SiteSectionEditorProps) {
   return (
@@ -74,6 +94,44 @@ export function SiteSectionEditor({ site }: SiteSectionEditorProps) {
                 }))
               }
             />
+          </div>
+
+          <div className="rounded-2xl border border-[color:var(--folio-line)] bg-white/54 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--folio-soft)]">
+              Appearance
+            </p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <SelectField
+                id="site-appearance-theme"
+                label="Background theme"
+                options={themeOptions}
+                value={draft.appearance.theme}
+                onChange={(theme) =>
+                  updateDraft((current) => ({
+                    ...current,
+                    appearance: {
+                      ...current.appearance,
+                      theme,
+                    },
+                  }))
+                }
+              />
+              <SelectField
+                id="site-appearance-grid"
+                label="Grid style"
+                options={gridOptions}
+                value={draft.appearance.grid}
+                onChange={(grid) =>
+                  updateDraft((current) => ({
+                    ...current,
+                    appearance: {
+                      ...current.appearance,
+                      grid,
+                    },
+                  }))
+                }
+              />
+            </div>
           </div>
 
           <div className="rounded-2xl border border-[color:var(--folio-line)] bg-white/54 p-4">

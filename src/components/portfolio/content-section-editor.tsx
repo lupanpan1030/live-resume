@@ -4,10 +4,12 @@ import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import {
   type ReactNode,
+  type SelectHTMLAttributes,
   useEffect,
   useId,
   useState,
 } from "react";
+import { cn } from "@/lib/utils";
 import {
   OwnerSectionEditButton,
   useOwnerEditMode,
@@ -18,6 +20,8 @@ type DraftUpdater<T> = (update: (current: T) => T) => void;
 
 type ContentSectionEditorProps<T> = {
   children: (draft: T, updateDraft: DraftUpdater<T>) => ReactNode;
+  className?: string;
+  panelClassName?: string;
   panelTitle: string;
   sectionLabel: string;
   sectionName: ContentSectionName;
@@ -32,6 +36,17 @@ type TextFieldProps = {
   type?: "text" | "url";
   value: string;
 };
+
+type SelectFieldProps<T extends string> = {
+  id: string;
+  label: string;
+  onChange: (value: T) => void;
+  options: Array<{
+    label: string;
+    value: T;
+  }>;
+  value: T;
+} & Pick<SelectHTMLAttributes<HTMLSelectElement>, "aria-describedby">;
 
 type StringListEditorProps = {
   addLabel?: string;
@@ -123,6 +138,34 @@ export function TextField({
           onChange={(event) => onChange(event.target.value)}
         />
       )}
+    </label>
+  );
+}
+
+export function SelectField<T extends string>({
+  id,
+  label,
+  onChange,
+  options,
+  value,
+  ...selectProps
+}: SelectFieldProps<T>) {
+  return (
+    <label className="block">
+      <FieldLabel htmlFor={id}>{label}</FieldLabel>
+      <select
+        className={fieldInputClassName()}
+        id={id}
+        value={value}
+        onChange={(event) => onChange(event.target.value as T)}
+        {...selectProps}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </label>
   );
 }
@@ -269,6 +312,8 @@ export function ObjectListEditor<T>({
 
 export function ContentSectionEditor<T>({
   children,
+  className,
+  panelClassName,
   panelTitle,
   sectionLabel,
   sectionName,
@@ -336,7 +381,7 @@ export function ContentSectionEditor<T>({
   }
 
   return (
-    <div className="mb-8">
+    <div className={cn("mb-8", className)}>
       <div className="flex justify-end">
         <OwnerSectionEditButton
           isActive={isOpen}
@@ -355,7 +400,12 @@ export function ContentSectionEditor<T>({
       ) : null}
 
       {isOpen ? (
-        <div className="mt-4 rounded-[1.5rem] border border-white/70 bg-white/82 p-4 shadow-[0_22px_56px_rgba(23,35,53,0.08)] backdrop-blur-md sm:p-6">
+        <div
+          className={cn(
+            "mt-4 rounded-[1.5rem] border border-white/70 bg-white/82 p-4 shadow-[0_22px_56px_rgba(23,35,53,0.08)] backdrop-blur-md sm:p-6",
+            panelClassName
+          )}
+        >
           <div className="border-b border-[color:var(--folio-line)] pb-5">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--folio-soft)]">
               {sectionLabel} section
