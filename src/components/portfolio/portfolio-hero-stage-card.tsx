@@ -105,7 +105,7 @@ export function PortfolioHeroStageCard({
       />
 
       {editor && !decorative ? (
-        <div className="absolute right-4 top-4 z-30 w-[min(44rem,calc(100vw-2rem))] sm:right-8 sm:top-7 lg:right-10 lg:top-10">
+        <div className="absolute inset-x-4 top-4 z-30 min-w-0 sm:inset-x-auto sm:right-8 sm:top-7 sm:w-[min(44rem,calc(100%_-_4rem))] lg:right-10 lg:top-10 lg:w-[min(44rem,calc(100%_-_5rem))]">
           {editor}
         </div>
       ) : null}
