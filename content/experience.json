@@ -1,0 +1,44 @@
+{
+  "title": "Experience",
+  "intro": "Summarize your most relevant professional experience. Focus on responsibilities, collaboration, systems, and outcomes without using private employer details.",
+  "items": [
+    {
+      "company": "Company Name",
+      "role": "Your role / job title",
+      "period": "Start Year - End Year",
+      "summary": "A brief placeholder summary of this role, the team context, and the kind of work you were responsible for.",
+      "highlights": [
+        {
+          "title": "Workflow and delivery",
+          "description": "Describe a representative responsibility, such as improving a workflow, supporting a team process, or helping deliver a system change.",
+          "skills": [
+            "Planning",
+            "Delivery",
+            "Communication",
+            "Documentation"
+          ]
+        },
+        {
+          "title": "Technical implementation",
+          "description": "Describe a representative technical contribution, such as building a feature, maintaining a service, improving data quality, or automating a manual task.",
+          "skills": [
+            "TypeScript",
+            "React",
+            "APIs",
+            "Testing"
+          ]
+        },
+        {
+          "title": "Operations and support",
+          "description": "Describe how you supported reliability, users, stakeholders, or operational handover in a practical working environment.",
+          "skills": [
+            "Support",
+            "Monitoring",
+            "Troubleshooting",
+            "User feedback"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Contact",
+  "description": "Use this section to invite relevant conversations and make your preferred contact methods clear.",
+  "links": [
+    {
+      "label": "Email",
+      "value": "you@example.com",
+      "href": "mailto:you@example.com"
+    },
+    {
+      "label": "GitHub",
+      "value": "yourusername",
+      "href": "https://github.com/yourusername"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "yourusername",
+      "href": "https://linkedin.com/in/yourusername"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Your Name",
+  "role": "Your role / job title",
+  "location": "City, Country",
+  "availability": "Open to relevant roles, freelance projects, and professional opportunities.",
+  "seo": {
+    "title": "Your Name | Resume",
+    "description": "A single-page resume site template with placeholder content for your profile, experience, projects, education, and contact links."
+  },
+  "nav": [
+    {
+      "label": "Overview",
+      "href": "#overview"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Experience",
+      "href": "#experience"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    },
+    {
+      "label": "Education",
+      "href": "#education"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "cv": {
+    "label": "Download CV",
+    "href": "/cv/your-cv.pdf"
+  },
+  "ui": {
+    "evidenceLabel": "Evidence snapshot",
+    "focusLabel": "Current focus",
+    "sectionSuffix": "Section",
+    "skipToContentLabel": "Skip to content"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Education",
+  "intro": "List relevant education, certifications, or training. Keep the details concise and easy to scan.",
+  "items": [
+    {
+      "school": "University Name",
+      "degree": "Degree or certification name",
+      "period": "Start Year - End Year",
+      "details": [
+        "Relevant coursework, specialization, or achievement.",
+        "Optional additional detail about your study focus."
+      ]
+    },
+    {
+      "school": "Training Provider Name",
+      "degree": "Certificate or program name",
+      "period": "Year",
+      "details": [
+        "Relevant training, credential, or professional development detail."
+      ]
+    }
+  ]
+}

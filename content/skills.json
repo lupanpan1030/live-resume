@@ -1,0 +1,38 @@
+{
+  "title": "Skills",
+  "intro": "Group your strongest skills so visitors can scan your technical and working strengths quickly.",
+  "groups": [
+    {
+      "label": "Languages",
+      "items": [
+        "Language One",
+        "Language Two",
+        "Language Three"
+      ]
+    },
+    {
+      "label": "Frameworks",
+      "items": [
+        "Framework One",
+        "Framework Two",
+        "Framework Three"
+      ]
+    },
+    {
+      "label": "Tools",
+      "items": [
+        "Tool One",
+        "Tool Two",
+        "Tool Three"
+      ]
+    },
+    {
+      "label": "Practices",
+      "items": [
+        "Practice One",
+        "Practice Two",
+        "Practice Three"
+      ]
+    }
+  ]
+}

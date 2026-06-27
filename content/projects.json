@@ -1,0 +1,30 @@
+{
+  "title": "Projects",
+  "intro": "Show selected projects with direct links. Use live demos, repositories, project pages, or public write-ups.",
+  "items": [
+    {
+      "label": "Featured project",
+      "title": "Project Name",
+      "meta": "Tech stack or project type",
+      "description": "A short placeholder description explaining the problem, your contribution, and why this project is relevant.",
+      "href": "https://example.com",
+      "cta": "View project"
+    },
+    {
+      "label": "GitHub project",
+      "title": "Project Name",
+      "meta": "Repository example",
+      "description": "A short placeholder description for an open-source or portfolio repository. Mention the core idea and the kind of engineering work it demonstrates.",
+      "href": "https://github.com/yourusername/project",
+      "cta": "View repository"
+    },
+    {
+      "label": "Additional project",
+      "title": "Project Name",
+      "meta": "Design, data, or product example",
+      "description": "A short placeholder description for another project, experiment, or shipped artifact that supports your resume story.",
+      "href": "https://example.com",
+      "cta": "View project"
+    }
+  ]
+}

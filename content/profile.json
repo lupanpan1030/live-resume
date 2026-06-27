@@ -1,0 +1,46 @@
+{
+  "headerIntro": {
+    "ariaLabel": "Your Name",
+    "lines": [
+      "Hi, I'm Your Name",
+      "Welcome to my resume site",
+      "Your role / job title",
+      "Explore my work"
+    ]
+  },
+  "title": "A short headline that explains the kind of work you do and the value you bring.",
+  "intro": "Add a concise introduction about your background, current focus, and what kinds of opportunities you are looking for.",
+  "metaLine": [
+    "City, Country",
+    "Your focus area",
+    "Your specialty"
+  ],
+  "proofs": [
+    "City, Country",
+    "Your qualification or credential",
+    "Your professional focus",
+    "Your preferred work area"
+  ],
+  "focus": [
+    {
+      "label": "Focus",
+      "value": "Product and user workflows"
+    },
+    {
+      "label": "Focus",
+      "value": "Full-stack implementation"
+    },
+    {
+      "label": "Focus",
+      "value": "Clear technical communication"
+    }
+  ],
+  "summary": "Use this summary to describe your professional direction in plain language. Keep it specific enough for a hiring manager to understand what you can do next.",
+  "overview": {
+    "title": "Overview",
+    "paragraphs": [
+      "Write a short overview of your professional background. Explain the environments you have worked in, the kinds of problems you enjoy solving, and the strengths you want visitors to remember.",
+      "Use the second paragraph to connect your experience, projects, and career goals. Keep the tone practical and concrete rather than promotional."
+    ]
+  }
+}
